@@ -6,7 +6,7 @@ while True:
         variable_total = variable_total + data
         
     else:
-         print("The programe end")
+         print("The program end")
          break
     
 print(f"The total is {variable_total}")
