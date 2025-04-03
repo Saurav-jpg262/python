@@ -14,4 +14,4 @@ while True:
         print("You are out of attempts. The correct answer is Tokyo.")
         break
 
-    print(f"Incorrect. Attempts: {attempts}/{max_attempts}")
+    print(f"Incorrect. Attempts: {attempts}/{max_attempts}") 
