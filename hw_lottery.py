@@ -1,34 +1,39 @@
-numbers = set()
+user_numbers = set()
+while True:
+    if len(user_numbers) >= 7:
+        break
+    try:
+        user_input = int(input(f"Enter a number {len(user_numbers)+1}/7 : \n"))
+        if user_input in user_numbers:
+            print("You already entered that number")
+        else:
+            user_numbers.add(user_input)
+    except ValueError:
+        print("Please enter only numbers")
+print("Your lottery numbers are:")
+for number in user_numbers:
+    print(number)
 
-while len(numbers) < 7:
-    number = int(input("Enter a number:\n "))
-    
+winning_numbers = {10,25,32,41,43,45,50}
 
-    if number in numbers:
-        print("You already entered this number. Try a different one.")
-    else:
-        numbers.add(number)
+# Check common numbers using intersection
+found_numbers = user_numbers.intersection(winning_numbers)
 
-print("Your numbers are:", numbers)
+count_correct_numbers = len(found_numbers)
 
-winning_numbers = {10, 25, 32, 41, 43, 45, 50}
+# We can do a if/elif structure
+#if count_correct_numbers == 3:
+#    print("You won $4!")
 
+prizes = {
+    3: 4,
+    4: 15,
+    5: 200,
+    6: 30000,
+    7: 5000000
+}
 
-correct = numbers & winning_numbers  
-count = len(correct)
-
-
-if count == 3:
-    print("You win $4")
-elif count == 4:
-    print("You win $15")
-elif count == 5:
-    print("You win $200")
-elif count == 6:
-    print("You win $30000")
-elif count == 7:
-    print("You win $5,000,000")
+if count_correct_numbers in prizes:
+    print(f"You won ${prizes[count_correct_numbers]}")
 else:
-    print("Sorry, no prize.")
-
-print("Correct numbers:"correct)
+    print("Sorry, you didn't win this time...")
